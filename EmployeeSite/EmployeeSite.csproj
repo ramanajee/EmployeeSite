@@ -46,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -53,6 +59,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -142,11 +150,34 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Business\ChangesTrackProvider.cs" />
+    <Compile Include="Business\IChangesTrackProvider.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Data\Entities\EmployeeActivity.cs" />
+    <Compile Include="Data\Context\EmployeeDbContext.cs" />
+    <Compile Include="Data\Entities\Employee.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802110835474_InitialCreate.cs" />
+    <Compile Include="Migrations\201802110835474_InitialCreate.Designer.cs">
+      <DependentUpon>201802110835474_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802110841347_IsDeleted_Column_Add.cs" />
+    <Compile Include="Migrations\201802110841347_IsDeleted_Column_Add.Designer.cs">
+      <DependentUpon>201802110841347_IsDeleted_Column_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802110846483_Employee_Activity_Table_Added.cs" />
+    <Compile Include="Migrations\201802110846483_Employee_Activity_Table_Added.Designer.cs">
+      <DependentUpon>201802110846483_Employee_Activity_Table_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802111217433_Employee_Permissions_Column_Added.cs" />
+    <Compile Include="Migrations\201802111217433_Employee_Permissions_Column_Added.Designer.cs">
+      <DependentUpon>201802111217433_Employee_Permissions_Column_Added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -182,9 +213,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Employees\Reports.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -202,6 +236,20 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802110835474_InitialCreate.resx">
+      <DependentUpon>201802110835474_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802110841347_IsDeleted_Column_Add.resx">
+      <DependentUpon>201802110841347_IsDeleted_Column_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802110846483_Employee_Activity_Table_Added.resx">
+      <DependentUpon>201802110846483_Employee_Activity_Table_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802111217433_Employee_Permissions_Column_Added.resx">
+      <DependentUpon>201802111217433_Employee_Permissions_Column_Added.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

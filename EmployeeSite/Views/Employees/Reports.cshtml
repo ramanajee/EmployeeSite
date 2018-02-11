@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EmployeeSite.Data.Entities.EmployeeActivity>
+
+@{
+    ViewBag.Title = "Reports";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChangeType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NewValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OldValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChangeType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NewValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OldValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+    </tr>
+}
+
+</table>
