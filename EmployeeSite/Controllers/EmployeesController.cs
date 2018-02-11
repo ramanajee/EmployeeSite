@@ -7,6 +7,8 @@ using EmployeeSite.Data.Entities;
 using EmployeeSite.Business;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using EmployeeSite.ViewModels;
 
 namespace EmployeeSite.Controllers
 {
@@ -109,7 +111,21 @@ namespace EmployeeSite.Controllers
         [HttpGet, ActionName("Reports")]
         public async Task<ActionResult> GetReports()
         {
-            IEnumerable<EmployeeActivity> report = await db.EmployeeActivities.ToListAsync();
+
+
+            var report = await (from ea in db.EmployeeActivities
+                                join e in db.Employees on ea.EmployeeId equals e.Id
+                                select new ReportVm
+                                {
+                                    ChangeType = ea.ChangeType,
+                                    Date = ea.Date,
+                                    EmployeeId = e.Id,
+                                    EmployeeName = e.Name,
+                                    NewValue = ea.NewValue,
+                                    OldValue = ea.OldValue,
+                                    Id = ea.Id
+                                }).ToListAsync();
+
             return View("Reports", report);
         }
 
