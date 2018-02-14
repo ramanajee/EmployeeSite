@@ -9,9 +9,13 @@ namespace EmployeeSite.Data.Entities
 {
     public class PermissionTie
     {
-        [Key, ForeignKey("Permission")]
+        [Key]
+        public int Id { get; set; }
+        [ForeignKey("Permission")]
         public int EmployeeId { get; set; }
-        [Key, ForeignKey("Employee")]
+        [ForeignKey("Employee")]
         public int PermissionId { get; set; }
+        public virtual Permission Permission { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace EmployeeSite.Data.Context
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<EmployeeActivity> EmployeeActivities { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Permission> Permissions { get; set; }
+        public virtual DbSet<PermissionTie> PermissionsTie { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,7 +28,9 @@ namespace EmployeeSite.Data.Context
                         .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Employee>().HasKey(x => x.Id);
             modelBuilder.Entity<Department>().HasKey(x => x.Id);
-
+            modelBuilder.Entity<Permission>().HasKey(x => x.Id);
+            modelBuilder.Entity<PermissionTie>().Property(x => x.EmployeeId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            modelBuilder.Entity<PermissionTie>().Property(x => x.PermissionId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
         }
     }
 }
