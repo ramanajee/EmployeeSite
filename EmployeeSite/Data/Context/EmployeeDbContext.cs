@@ -13,6 +13,7 @@ namespace EmployeeSite.Data.Context
         }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<EmployeeActivity> EmployeeActivities { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -24,6 +25,8 @@ namespace EmployeeSite.Data.Context
                         .Property(c => c.Id)
                         .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Employee>().HasKey(x => x.Id);
+            modelBuilder.Entity<Department>().HasKey(x => x.Id);
+
         }
     }
 }

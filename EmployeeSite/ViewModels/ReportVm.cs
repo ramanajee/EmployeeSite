@@ -16,6 +16,5 @@ namespace EmployeeSite.ViewModels
         public DateTime Date { get; set; }
         [DisplayName("Employee Name")]
         public string EmployeeName { get; set; }
-
     }
 }

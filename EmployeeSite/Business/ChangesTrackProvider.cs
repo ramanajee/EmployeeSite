@@ -52,19 +52,19 @@ namespace EmployeeSite.Business
             }
 
             // Permissions
-            if (!string.IsNullOrEmpty(employeeInfo.Permissions) &&
-               !string.IsNullOrEmpty(employee.Permissions) &&
-               employeeInfo.Permissions != employee.Permissions)
-            {
-                _employeeDb.EmployeeActivities.Add(new EmployeeActivity
-                {
-                    ChangeType = Constants.PERMISSIONS,
-                    Date = DateTime.UtcNow,
-                    EmployeeId = employeeInfo.Id,
-                    NewValue = employee.Manager,
-                    OldValue = employeeInfo.Manager
-                });
-            }
+            //if (!ReferenceEquals(employeeInfo.Permissions,null) &&
+            //   !!ReferenceEquals(string.IsNullOrEmpty(employee.Permissions)) &&
+            //   employeeInfo.Permissions != employee.Permissions)
+            //{
+            //    _employeeDb.EmployeeActivities.Add(new EmployeeActivity
+            //    {
+            //        ChangeType = Constants.PERMISSIONS,
+            //        Date = DateTime.UtcNow,
+            //        EmployeeId = employeeInfo.Id,
+            //        NewValue = employee.Manager,
+            //        OldValue = employeeInfo.Manager
+            //    });
+            //}
 
             await _employeeDb.SaveChangesAsync();
         }

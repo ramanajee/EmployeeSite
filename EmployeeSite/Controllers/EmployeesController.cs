@@ -42,10 +42,28 @@ namespace EmployeeSite.Controllers
         }
         public ActionResult Create()
         {
+
+            var permissions = new List<PermissionVm>();
+
+            permissions.Add(new PermissionVm
+            {
+                Id = 1,
+                PermissionName = "Admin"
+            });
+            permissions.Add(new PermissionVm
+            {
+                Id = 2,
+                PermissionName = "Client"
+            });
+
+
+            ViewBag.Permissions = new MultiSelectList(permissions, "Id", "PermissionName");
+
+
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> Create(Employee employee)
+        public async Task<ActionResult> Create(Employee employee,int[] Id)
         {
             if (ModelState.IsValid)
             {

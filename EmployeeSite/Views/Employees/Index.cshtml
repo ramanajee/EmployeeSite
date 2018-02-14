@@ -4,11 +4,16 @@
     ViewBag.Title = "Index";
 }
 
+<h2>Index</h2>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentId.DepartmentName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -31,9 +36,6 @@
             @Html.DisplayNameFor(model => model.EmploymentStatus)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Department)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Shift)
         </th>
         <th>
@@ -45,11 +47,20 @@
         <th>
             @Html.DisplayNameFor(model => model.FavoriteColor)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Permissions)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentId.DepartmentName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -72,9 +83,6 @@
             @Html.DisplayFor(modelItem => item.EmploymentStatus)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Department)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Shift)
         </td>
         <td>
@@ -85,6 +93,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FavoriteColor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Permissions)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

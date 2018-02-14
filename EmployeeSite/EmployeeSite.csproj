@@ -153,9 +153,12 @@
     <Compile Include="Business\ChangesTrackProvider.cs" />
     <Compile Include="Business\IChangesTrackProvider.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
+    <Compile Include="Data\Entities\Department.cs" />
     <Compile Include="Data\Entities\EmployeeActivity.cs" />
     <Compile Include="Data\Context\EmployeeDbContext.cs" />
     <Compile Include="Data\Entities\Employee.cs" />
+    <Compile Include="Data\Entities\Permission.cs" />
+    <Compile Include="Data\Entities\PermissionTie.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -175,9 +178,18 @@
     <Compile Include="Migrations\201802111217433_Employee_Permissions_Column_Added.Designer.cs">
       <DependentUpon>201802111217433_Employee_Permissions_Column_Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802141629023_Department_Table.cs" />
+    <Compile Include="Migrations\201802141629023_Department_Table.Designer.cs">
+      <DependentUpon>201802141629023_Department_Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802141630484_Department_Table_Column_Drop.cs" />
+    <Compile Include="Migrations\201802141630484_Department_Table_Column_Drop.Designer.cs">
+      <DependentUpon>201802141630484_Department_Table_Column_Drop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="ViewModels\PermissionVm.cs" />
     <Compile Include="ViewModels\ReportVm.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -250,6 +262,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802111217433_Employee_Permissions_Column_Added.resx">
       <DependentUpon>201802111217433_Employee_Permissions_Column_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802141629023_Department_Table.resx">
+      <DependentUpon>201802141629023_Department_Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802141630484_Department_Table_Column_Drop.resx">
+      <DependentUpon>201802141630484_Department_Table_Column_Drop.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
